@@ -99,3 +99,8 @@ a.navbar-brand:visited{
 .float{
   position: absolute;
 }
+
+.permalink{
+  font-size: 50px;
+  display: inline-block;
+}

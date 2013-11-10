@@ -4,9 +4,10 @@
 .col-md-4
   -unless request.user_agent =~ /Mobile|webOS/
     .question
-      %h3 scan the QR code to vote
-      %h4 or visit
-      %h3= permalink_url(@poll.permalink)
+      %h2 scan QR code to vote
+      %h1
+        = "vollot.com/"
+        .permalink=@poll.permalink
     .qr=image_tag @poll.qr_url_prefix + permalink_url(@poll.permalink)
 
 .col-md-8
