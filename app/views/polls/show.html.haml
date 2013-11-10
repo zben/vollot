@@ -1,0 +1,62 @@
+.row
+.col-md-4
+  -unless request.user_agent =~ /Mobile|webOS/
+    .question
+      %h3 scan the QR code to vote
+      %h4 or visit
+      %h3= permalink_url(@poll.permalink)
+    .qr=image_tag @poll.qr_url_prefix + permalink_url(@poll.permalink)
+
+.col-md-8
+  .question
+    -if mobile?
+      %h3= @poll.question
+    -else
+      %h2= @poll.question
+
+  -if !mobile? || session[:voted_polls].include?(@poll.id)
+    -@poll.choices.each_with_index do |choice|
+      %h2.clear=choice.content
+      .count{id: "count_#{choice.id}"}=choice.votes.count
+      -if !mobile?
+        .bar{id: "choice_#{choice.id}", style: "width: #{choice.votes_count * 2}px"}
+
+  -if mobile?
+    -unless session[:voted_polls].present? && session[:voted_polls].include?(@poll.id)
+      -@poll.choices.each_with_index do |choice|
+        %h2=link_to choice.content, vote_path(choice), class: "btn btn-primary"
+
+-unless request.user_agent =~ /Mobile|webOS/
+  :javascript
+    $(document).ready(function(){
+      var scale = 100
+      function doPoll(){
+        $.get('polls/#{@poll.permalink}.json', function(data) {
+          while(max_width > 600 || max_width == 0){
+            var max_width = 0;
+            for (var i = 0; i < data.length; i++) {
+              var choice = data[i];
+
+              if(max_width < scale * choice["votes_count"]){
+                max_width = scale * choice["votes_count"];
+              }
+            }
+            if(max_width > 600){
+              scale = scale * 3 / 4
+            };
+          };
+
+          for (var i = 0; i < data.length; i++) {
+            var choice = data[i];
+            $("#choice_"+choice['id']).css("width", scale * choice["votes_count"]);
+            $("#count_"+choice['id']).text(choice["votes_count"]);
+
+            if(max_width < scale * choice["votes_count"]){
+              max_width = scale * choice["votes_count"];
+            }
+          }
+          setTimeout(doPoll,2000);
+        });
+      };
+      doPoll();
+    });

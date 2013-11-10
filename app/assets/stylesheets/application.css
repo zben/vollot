@@ -11,3 +11,88 @@
  *= require_self
  *= require_tree .
  */
+
+form input {
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #000;
+  outline: none;
+  margin-bottom: 20px;
+}
+
+input.big-text{
+  font-size: 30px;
+  line-height: 70px;
+}
+
+span.big-text{font-size: 30px}
+
+a.hidden{display: hidden}
+
+.bar{
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: #00BFFF;
+  transition: width 1s;
+}
+
+.count{
+  display: inline-block;
+  font-size: 20px;
+  text-align: center;
+  padding-top: 10px;
+  color: white;
+  width: 70px;
+  background: red;
+  height: 40px;
+  float: left;
+  margin-right:10px;
+}
+h2 a{width: 100%;}
+
+.qr{
+  margin: auto;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.qr img{
+  width: 100%;
+}
+
+.link{
+  font-style: italic;
+}
+
+body{
+  padding-top: 40px;
+}
+
+form{
+  margin-top:100px;
+}
+
+.question{
+  background-color: #ddd;
+  width: 100%;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+.clear{
+  clear: both;
+}
+
+a.navbar-brand{
+  font-size: 50px;
+  font-family: "Times";
+}
+a.navbar-brand:visited{
+  color: white;
+}
+
+.navbar-header nav a:visited{
+  color: white;
+}
+
