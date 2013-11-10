@@ -1,3 +1,5 @@
+-session[:voted_polls] ||= []
+
 .row
 .col-md-4
   -unless request.user_agent =~ /Mobile|webOS/
@@ -22,7 +24,7 @@
         .bar{id: "choice_#{choice.id}", style: "width: #{choice.votes_count * 2}px"}
 
   -if mobile?
-    -unless session[:voted_polls].present? && session[:voted_polls].include?(@poll.id)
+    -unless session[:voted_polls].include?(@poll.id)
       -@poll.choices.each_with_index do |choice|
         %h2=link_to choice.content, vote_path(choice), class: "btn btn-primary"
 
