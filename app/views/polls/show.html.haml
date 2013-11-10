@@ -35,7 +35,9 @@
       var scale = 100
       function doPoll(){
         $.get('polls/#{@poll.permalink}.json', function(data) {
-          while(max_width > 600 || max_width == 0){
+          var max_width = -1
+          while(max_width > 600 || max_width == -1){
+            console.log(max_width)
             var max_width = 0;
             for (var i = 0; i < data.length; i++) {
               var choice = data[i];
