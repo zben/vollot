@@ -12,6 +12,13 @@
  *= require_tree .
  */
 
+body{
+  font-family: 'Oswald', serif !important;
+}
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Oswald', serif !important;
+}
+
 form input {
   border: none;
   background: transparent;
@@ -66,7 +73,7 @@ h2 a{width: 100%;}
 }
 
 body{
-  padding-top: 40px;
+  padding-top: 80px;
 }
 
 form{
@@ -104,3 +111,4 @@ a.navbar-brand:visited{
   font-size: 50px;
   display: inline-block;
 }
+

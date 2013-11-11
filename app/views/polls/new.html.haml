@@ -1,5 +1,5 @@
 .row
-  .col-md-8.col-md-offset-2
+  .col-md-7
     %h1 Anonymous Quick Polling for Your Audience.
     = nested_form_for(@poll, html_options: {autocomplete: "off"}) do |f|
       - if @poll.errors.any?
@@ -22,13 +22,14 @@
         =f.link_to_add "Add a choice", :choices, class: "hidden", id: "add-choice"
       .actions
         = f.submit class: "btn btn-primary"
-%br
-%br
-.row
-  .col-md-6.col-md-offset-2
-    =image_tag "vollot1.jpg"
-  .col-md-2
-    =image_tag "vollot2.jpg"
+
+  .col-md-5
+    =image_tag "vollot1.jpg", width: 500
+    .row
+      .col-md-6
+        =image_tag "vollot3.jpg", width: 250
+      .col-md-2
+        =image_tag "vollot2.jpg", width: 240
 
 :javascript
   $(document).ready(function(){
